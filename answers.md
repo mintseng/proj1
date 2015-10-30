@@ -12,9 +12,10 @@ It calls capture from a certain path.
 Ebola.
 
 # Question 4: What did you pass into the redirect_to? If it is a path, what did that path need? If it is not a path, why is it okay not to have a path here?
-I passed in ":root".
+I passed in ":root" in order to get back to the home page. I passed in ":back" to get back to the previous page.
 
 # Question 5: Explain how putting this line "flash[:error] = @pokemon.errors.full_messages.to_sentence" shows error messages on your form.
+This will have a red box that appears saying that an error has occured.
 
 
 # Give us feedback on the project and decal below!

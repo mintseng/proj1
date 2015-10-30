@@ -1,4 +1,8 @@
-class PokemonController < ApplicationController
+class PokemonsController < ApplicationController
+
+	def index
+		@pokemons = Pokemon.all
+	end
 
 	def capture
 		@poke = Pokemon.where(id:params[:id])[0]
@@ -24,18 +28,22 @@ class PokemonController < ApplicationController
 		@pokemons = Pokemon.new
 	end
 
+	def show
+	end
+
 	def create
 		puts "hi"
 		puts @params
 		puts "hi2"
-		# @pokemon = Pokemon.new( name: pokemon_params[:name], health: 100, level: 1, trainer: current_trainer)
-		# if not @pokemon.valid?
-		# 	flash[:error] = @pokemon.errors.full_messages.to_sentence
-		# 	redirect_to new_pokemon_path
-		# else
-		# 	@pokemon.save
-		# 	redirect_to trainer_path(id: current_trainer)
-		# end
+		@pokemon = Pokemon.new( name: params[:pokemon][:name], health: 100, level: 1, trainer: current_trainer)
+		if not @pokemon.valid?
+			flash[:error] = @pokemon.errors.full_messages.to_sentence
+			redirect_to new_pokemon_path
+		else
+			@pokemon.save
+			redirect_to trainer_path(id: current_trainer)
+		end
+
 	end
 
 end
